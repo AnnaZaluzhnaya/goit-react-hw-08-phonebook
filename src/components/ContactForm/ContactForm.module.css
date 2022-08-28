@@ -2,23 +2,39 @@
   margin-top: 20px;
   margin-bottom: 10px;
   border-radius: 5px;
-  border: 2px solid blueviolet;
-  background-color: #e19adc;
+  border: 2px solid #4f4245;
+  background-color: #ddadaf;
   font-weight: bold;
   cursor: pointer;
+  height: 40px;
+  width: 170px;
 }
 
 .addBtn:hover {
-  background-color: blueviolet;
+  background-color: #722f37;
   transform: scale(1.1);
-  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px blueviolet;
+  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
   transition: 1s;
+  color: whitesmoke;
 }
 
 .input {
-  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px blueviolet;
+  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
+  height: 25px;
 }
 
 .wrapper {
   padding: 20px;
+}
+
+.form {
+  margin-right: 100px;
+}
+
+.inputTitle {
+  font-size: 18px;
+}
+
+.btnName {
+  font-size: 18px;
 }

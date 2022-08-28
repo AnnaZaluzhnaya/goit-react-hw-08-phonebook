@@ -1,20 +1,30 @@
 .item {
   list-style: none;
   margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 .removeBtn {
   margin-top: 10px;
   border-radius: 5px;
-  border: 2px solid blueviolet;
-  background-color: #e19adc;
+  border: 2px solid #4f4245;
+  background-color: #ddadaf;
   font-weight: bold;
   cursor: pointer;
+  height: 30px;
+  width: 70px;
 }
 
 .removeBtn:hover {
-  background-color: blueviolet;
-  transform: scale(0.9);
-  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px blueviolet;
-  transition: 1s;
+  background-color: #722f37;
+  /* transform: scale(0.9); */
+  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
+  color: whitesmoke;
+  /* transition: 1s; */
+}
+
+.btnName {
+  font-size: 18px;
 }

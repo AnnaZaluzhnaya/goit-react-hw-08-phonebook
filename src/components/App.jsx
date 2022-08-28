@@ -6,10 +6,10 @@ import style from 'components/App.module.css';
 export const App = () => {
   return (
     <div className={style.wrapper}>
-      <h2>Phonebook</h2>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
+      <div className={style.phonebookWrapper}>
+        <ContactForm />
+        <Filter />
+      </div>
       <ContactList />
     </div>
   );

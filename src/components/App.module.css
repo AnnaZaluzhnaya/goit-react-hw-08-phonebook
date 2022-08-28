@@ -1,4 +1,19 @@
 .wrapper {
   padding: 20px;
-  border: 20px solid violet;
+  border: 20px solid #ddadaf;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.phonebookWrapper {
+  display: flex;
+}
+
+.phonebookTitle {
+  text-align: left;
+}
+
+.contactsTitle {
+  text-align: right;
 }

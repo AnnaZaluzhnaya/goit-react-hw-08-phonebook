@@ -3,9 +3,10 @@
 }
 
 .input {
-  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px blueviolet;
+  box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
+  height: 25px;
 }
 
 .filterName {
-  font-size: larger;
+  font-size: 18px;
 }

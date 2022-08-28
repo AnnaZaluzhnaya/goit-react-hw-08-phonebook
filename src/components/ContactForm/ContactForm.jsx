@@ -48,9 +48,10 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={style.form} onSubmit={handleSubmit}>
+      <h2 className={style.phonebookTitle}>Phonebook</h2>
       <label htmlFor={nameInputId}>
-        <p>Name</p>
+        <p className={style.inputTitle}>Name</p>
         <input
           className={style.input}
           type="text"
@@ -64,7 +65,7 @@ const ContactForm = () => {
         />
       </label>
       <label htmlFor={numberInputId}>
-        <p>Number</p>
+        <p className={style.inputTitle}>Number</p>
         <input
           className={style.input}
           type="tel"
@@ -79,7 +80,7 @@ const ContactForm = () => {
       </label>
       <br />
       <button type="submit" className={style.addBtn}>
-        Add contact
+        <span className={style.btnName}>Add contact</span>
       </button>
     </form>
   );
