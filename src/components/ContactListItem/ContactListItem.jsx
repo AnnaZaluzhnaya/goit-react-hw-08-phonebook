@@ -12,12 +12,12 @@ const ContactListItem = ({ id, number, name }) => {
 
   return (
     <li key={id} className={style.item}>
-      {name} <br /> {number}
       <div>
         <button type="button" className={style.removeBtn} onClick={removeClick}>
           <span className={style.btnName}>Delete</span>
         </button>
       </div>
+      {name} 🕻 {number}
     </li>
   );
 };
