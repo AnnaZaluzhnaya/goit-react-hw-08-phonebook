@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { contactsOperations, contactsSelectors } from 'redux/contacts';
-import Loader from 'components/Loader/Loader';
+// import Loader from 'components/Loader/Loader';
 import style from './ContactList.module.css';
 
 const ContactList = () => {
@@ -25,9 +25,9 @@ const ContactList = () => {
 
   let searchContact = value === '' ? contacts : getFilteredNames();
 
-  if (loading) {
-    return <Loader />;
-  }
+  // if (loading) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className={style.listWrapper}>
