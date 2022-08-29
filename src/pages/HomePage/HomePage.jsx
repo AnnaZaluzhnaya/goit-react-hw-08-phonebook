@@ -5,8 +5,8 @@ const HomePage = () => {
   return (
     <div>
       <h1 className={style.homeTitle}>
-        Welcome to our website. <br /> Create your phonebook and manage it
-        effectively!
+        Welcome to our website. <br /> Register, create your phonebook 🕮 and
+        manage it effectively!
       </h1>
     </div>
   );
