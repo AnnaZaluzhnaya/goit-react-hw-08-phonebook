@@ -1,0 +1,23 @@
+.authNav {
+  width: 300px;
+  margin: 30px;
+}
+
+.Btn {
+  background-color: #4f4245;
+  margin-right: 10px;
+  color: #ddadaf;
+  font-size: 20px;
+  box-shadow: 2px 2px 6px #722f37;
+  border: none;
+  transition: 1s;
+}
+
+.Btn:hover {
+  transform: scale(0.9);
+}
+/* .logInBtn {
+  background-color: #4f4245;
+  color: #ddadaf;
+  font-size: 20px;
+} */

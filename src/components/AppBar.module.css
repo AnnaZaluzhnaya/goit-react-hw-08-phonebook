@@ -4,4 +4,5 @@
   height: 100px;
   position: sticky;
   box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
+  display: flex;
 }
