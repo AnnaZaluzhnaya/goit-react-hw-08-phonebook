@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
+import style from 'pages/RegisterPage/RegisterPage.module.css';
 
 const RegisterPage = () => {
   //   const dispatch = useDispatch();
@@ -30,25 +31,32 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <h1>Registration form</h1>
+      <h1 className={style.formTitle}>Registration form</h1>
 
-      <form autoComplete="off">
+      <form className={style.registerForm} autoComplete="off">
         <label>
-          Name
-          <input type="text" name="name" />
+          <span className={style.labelName}>|Name</span>
+          <input className={style.registerInput} type="text" name="name" />
         </label>
 
         <label>
-          Mail
+          <span className={style.labelName}>|Phone</span>
+          <input className={style.registerInput} type="tel" name="number" />
+        </label>
+
+        <label>
+          <span className={style.labelName}>|Your mail</span>
           <input type="email" name="email" />
         </label>
 
         <label>
-          Password
+          <span className={style.labelName}>|Password</span>
           <input type="password" name="password" />
         </label>
 
-        <button type="submit">Register</button>
+        <button className={style.formBtn} type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

@@ -6,12 +6,12 @@ const AuthNav = () => {
     <div className={style.authNav}>
       <NavLink to="/register">
         <button type="button" className={style.Btn}>
-          Sign Up
+          SIGN UP
         </button>
       </NavLink>
       <NavLink to="/login">
         <button type="button" className={style.Btn}>
-          Log In
+          LOG IN
         </button>
       </NavLink>
     </div>
