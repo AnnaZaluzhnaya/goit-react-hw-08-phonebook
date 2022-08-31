@@ -20,7 +20,7 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const contactWillAdded = { name, phone: number };
+    const contactWillAdded = { name, number };
 
     if (contacts.find(contact => contact.name === name)) {
       Notiflix.Notify.info(`${name} is already in contacts`);

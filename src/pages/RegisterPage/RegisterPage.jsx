@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/authOperations';
+import { register } from 'redux/auth/authOperations';
 
 import style from 'pages/RegisterPage/RegisterPage.module.css';
 
@@ -9,7 +9,6 @@ const RegisterPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [number, setNumber] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -19,8 +18,6 @@ const RegisterPage = () => {
         return setEmail(value);
       case 'password':
         return setPassword(value);
-      // case 'number':
-      //   return setNumber(value);
       default:
         return;
     }
@@ -28,11 +25,11 @@ const RegisterPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
+    console.log({ name, email, password });
+    dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
-    // setNumber('');
   };
 
   return (
@@ -54,17 +51,6 @@ const RegisterPage = () => {
             onChange={handleChange}
           />
         </label>
-
-        {/* <label>
-          <span className={style.labelName}>|Phone</span>
-          <input
-            className={style.registerInput}
-            type="tel"
-            name="number"
-            value={number}
-            onChange={handleChange}
-          />
-        </label> */}
 
         <label>
           <span className={style.labelName}>|Your mail</span>

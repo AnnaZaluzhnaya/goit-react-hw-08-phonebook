@@ -1,9 +1,10 @@
 import style from 'pages/LoginPage/LoginPage.module.css';
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/authOperations';
 
 const LoginPage = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,7 +21,7 @@ const LoginPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(logIn({ email, password }));
     setEmail('');
     setPassword('');
   };

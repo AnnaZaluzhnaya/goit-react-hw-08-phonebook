@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {
+export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -13,14 +13,41 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
+export const register = createAsyncThunk('auth/register', async credentials => {
+  console.log(credentials);
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
+    Notiflix.Notify.info(
+      'Registration was successful, the account was created'
+    );
     return data;
   } catch (error) {
     Notiflix.Notify.failure('Registration error, please try again');
+    // return error.response.status;
   }
 });
 
-export default register;
+export const logIn = createAsyncThunk('auth/login', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    token.set(data.token);
+    Notiflix.Notify.success('Login successfully');
+    return data;
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'The email or password is entered incorrectly or such an account does not exist. Try again.'
+    );
+  }
+});
+
+export const logOut = createAsyncThunk('auth/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    Notiflix.Notify.failure(
+      'Something went wrong, it was not possible to log out of the account. Try again.'
+    );
+  }
+});

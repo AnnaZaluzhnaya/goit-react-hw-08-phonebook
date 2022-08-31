@@ -1,8 +1,9 @@
 .userMenu {
-  /* display: inline-block; */
-  /* margin-top: auto;
-  margin-left: auto; */
-  margin: auto;
+  /* margin-top: auto; */
+  margin-left: auto;
+  padding-right: 10px;
+
+  /* margin: auto; */
 }
 
 .outBtn {
@@ -29,4 +30,10 @@
   color: #722f37;
   font-style: italic;
   font-weight: 500;
+}
+
+.userName {
+  color: rgb(108, 8, 165);
+  font-weight: bold;
+  text-shadow: 0 14px 28px #d9cfe7, 0 10px 10px rgb(108, 8, 165);
 }

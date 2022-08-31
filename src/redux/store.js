@@ -8,6 +8,7 @@ import {
 } from './contacts/contactsReducer';
 import {
   persistStore,
+  persistReducer,
   REGISTER,
   REHYDRATE,
   FLUSH,
@@ -15,7 +16,16 @@ import {
   PERSIST,
   PURGE,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from './auth';
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const rootReducer = {
   contacts: combineReducers({
@@ -23,14 +33,9 @@ const rootReducer = {
     filter: filterReducer,
     isLoading,
   }),
+  auth: persistedAuthReducer,
   error,
 };
-
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
 
 const middleware = [
   ...getDefaultMiddleware({
