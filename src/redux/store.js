@@ -1,4 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   filterReducer,
   entities,
@@ -14,6 +15,7 @@ import {
   PERSIST,
   PURGE,
 } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 
 const rootReducer = {
   contacts: combineReducers({
@@ -24,14 +26,23 @@ const rootReducer = {
   error,
 };
 
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
+
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+];
+
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
+  middleware,
   devTools: process.env.NODE_ENV !== 'production',
 });
 
