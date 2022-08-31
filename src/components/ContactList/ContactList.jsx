@@ -26,9 +26,9 @@ const ContactList = () => {
   return (
     <div className={style.listWrapper}>
       {contacts.length > 0 &&
-        searchContact.map(({ id, numder, name }) => {
+        searchContact.map(({ id, number, name }) => {
           return (
-            <ContactListItem key={id} id={id} name={name} number={numder} />
+            <ContactListItem key={id} id={id} name={name} number={number} />
           );
         })}
     </div>
