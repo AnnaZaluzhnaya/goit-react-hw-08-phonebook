@@ -5,11 +5,19 @@ import AppBar from 'components/AppBar';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import ContactsPage from 'pages/ContactsPage/ContactsPage';
-import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchCurrentUser } from 'redux/auth/authOperations';
+import { useEffect } from 'react';
 
 export const App = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <div className={style.wrapper}>
       <AppBar />

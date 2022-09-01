@@ -24,7 +24,7 @@ export const register = createAsyncThunk('auth/register', async credentials => {
     return data;
   } catch (error) {
     Notiflix.Notify.failure('Registration error, please try again');
-    // return error.response.status;
+    return error.response.status;
   }
 });
 
@@ -38,6 +38,7 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
     Notiflix.Notify.failure(
       'The email or password is entered incorrectly or such an account does not exist. Try again.'
     );
+    return error.response.status;
   }
 });
 
@@ -49,5 +50,27 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     Notiflix.Notify.failure(
       'Something went wrong, it was not possible to log out of the account. Try again.'
     );
+    return error.response.status;
   }
 });
+
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+      return error.response.status;
+    }
+  }
+);
