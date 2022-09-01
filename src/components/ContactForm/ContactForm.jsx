@@ -49,39 +49,40 @@ const ContactForm = () => {
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
-      <h2 className={style.phonebookTitle}>Phonebook</h2>
-      <label htmlFor={nameInputId}>
-        <p className={style.inputTitle}>Name</p>
-        <input
-          className={style.input}
-          type="text"
-          name="name"
-          value={name}
-          id={nameInputId}
-          onChange={handleInputChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
-      <label htmlFor={numberInputId}>
-        <p className={style.inputTitle}>Number</p>
-        <input
-          className={style.input}
-          type="tel"
-          name="number"
-          value={number}
-          id={numberInputId}
-          onChange={handleInputChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </label>
-      <br />
-      <button type="submit" className={style.addBtn}>
-        <span className={style.btnName}>Add contact</span>
-      </button>
+      <div className={style.formBox}>
+        <label htmlFor={nameInputId} className={style.contactLabel}>
+          <p className={style.inputTitle}>Name</p>
+          <input
+            className={style.input}
+            type="text"
+            name="name"
+            value={name}
+            id={nameInputId}
+            onChange={handleInputChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+        </label>
+        <label htmlFor={numberInputId} className={style.contactLabel}>
+          <p className={style.inputTitle}>Number</p>
+          <input
+            className={style.input}
+            type="tel"
+            name="number"
+            value={number}
+            id={numberInputId}
+            onChange={handleInputChange}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+        </label>
+
+        <button type="submit" className={style.addBtn}>
+          <span className={style.btnName}>Add contact</span>
+        </button>
+      </div>
     </form>
   );
 };

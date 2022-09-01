@@ -3,7 +3,7 @@
   margin-bottom: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: black;
+  color: #4f4245;
   display: flex;
   text-align: center;
 }
@@ -14,18 +14,19 @@
   background-color: #ddadaf;
   font-weight: bold;
   cursor: pointer;
-  height: 30px;
+  height: 20px;
   width: 70px;
   margin-right: 20px;
+  transition: 1s;
 }
 
 .removeBtn:hover {
   background-color: #722f37;
   box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
   color: whitesmoke;
-  transition: 1s;
+  transform: scale(0.9);
 }
 
 .btnName {
-  font-size: 18px;
+  font-size: 15px;
 }

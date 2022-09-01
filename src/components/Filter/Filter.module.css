@@ -1,12 +1,26 @@
 .filter {
   margin-bottom: 10px;
+  text-align: center;
+  margin: auto;
 }
 
 .input {
   box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
-  height: 25px;
+  height: 15px;
+  border-radius: 6px;
 }
 
 .filterName {
+  font-size: 15px;
+  margin-right: 20px;
+  color: #722f37;
+  font-weight: 500;
+}
+
+.contactsTitle {
+  text-align: left;
   font-size: 18px;
+  color: black;
+  font-weight: bolder;
+  text-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
 }

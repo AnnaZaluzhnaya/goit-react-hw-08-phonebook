@@ -6,8 +6,8 @@ import style from 'pages/ContactsPage/ContactsPage.module.css';
 const ContactsPage = () => {
   return (
     <div className={style.phonebookWrapper}>
-      <ContactForm />
       <Filter />
+      <ContactForm />
       <ContactList />
     </div>
   );

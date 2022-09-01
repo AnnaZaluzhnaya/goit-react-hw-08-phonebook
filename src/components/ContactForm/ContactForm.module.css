@@ -1,13 +1,12 @@
 .addBtn {
-  margin-top: 20px;
-  margin-bottom: 10px;
   border-radius: 5px;
   border: 2px solid #4f4245;
   background-color: #ddadaf;
   font-weight: bold;
   cursor: pointer;
-  height: 40px;
-  width: 170px;
+  height: 30px;
+  width: 130px;
+  margin-top: 45px;
 }
 
 .addBtn:hover {
@@ -20,22 +19,31 @@
 
 .input {
   box-shadow: 0 14px 28px #d9cfe7, 0 10px 10px #722f37;
-  height: 20px;
+  height: 15px;
   margin-left: 10px;
+  border-radius: 6px;
 }
 
-/* .wrapper {
-  padding: 20px;
-} */
-
-/* .form {
+.form {
   margin-right: 100px;
-} */
-
-.inputTitle {
-  font-size: 15px;
+  display: flex;
 }
 
+.formBox {
+  display: flex;
+}
 .btnName {
   font-size: 18px;
+}
+
+.phonebookTitle {
+  font-size: 18px;
+}
+
+.contactLabel {
+  margin-right: 20px;
+  display: inline-block;
+  text-align: center;
+  color: #722f37;
+  font-weight: 500;
 }
