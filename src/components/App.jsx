@@ -1,18 +1,23 @@
 import style from 'components/App.module.css';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from 'pages/HomePage/HomePage';
 import AppBar from 'components/AppBar';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import ContactsPage from 'pages/ContactsPage/ContactsPage';
-import { authSelectors } from 'redux/auth';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
+// import { authSelectors } from 'redux/auth';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+import Loader from './Loader/Loader';
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 
 export const App = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const dispatch = useDispatch();
+  // const isFetching = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -21,18 +26,45 @@ export const App = () => {
   return (
     <div className={style.wrapper}>
       <AppBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" exact element={<RegisterPage />} />
-        <Route path="/login" exact element={<LoginPage />} />
-        {isLoggedIn ? (
-          <Route path="/contacts" exact element={<ContactsPage />} />
-        ) : (
-          <Route path="/" element={<HomePage />} />
-        )}
-
-        <Route path="*" element={<HomePage />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <HomePage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/register"
+            exact
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            exact
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 const ContactListItem = ({ id, number, name }) => {
   const dispatch = useDispatch();
 
-  const removeClick = () => {
-    dispatch(contactsOperations.removeContacts(id));
-  };
-
   return (
     <li key={id} className={style.item}>
       <div>
-        <button type="button" className={style.removeBtn} onClick={removeClick}>
+        <button
+          type="button"
+          className={style.removeBtn}
+          onClick={() => dispatch(contactsOperations.removeContacts(id))}
+        >
           <span className={style.btnName}>Delete</span>
         </button>
       </div>
