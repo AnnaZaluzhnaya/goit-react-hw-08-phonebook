@@ -25,7 +25,7 @@ const Filter = () => {
         your unique phonebook 🕮 Let's start!
       </h2>
       <label className={style.filterLabel}>
-        <p className={style.filterName}>Find contacts by name</p>
+        <p className={style.filterName}>| Find contacts by name |</p>
         <input
           className={style.input}
           type="text"
