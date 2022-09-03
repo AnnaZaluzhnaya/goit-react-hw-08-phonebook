@@ -1,14 +1,13 @@
 import style from 'components/App.module.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { useEffect, lazy, Suspense } from 'react';
-// import { authSelectors } from 'redux/auth';
+import { authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-// import Loader from './Loader/Loader';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -17,7 +16,7 @@ const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const isFetching = useSelector(authSelectors.getIsFetchingCurrent);
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -27,43 +26,39 @@ export const App = () => {
     <div className={style.wrapper}>
       <AppBar />
       <Suspense fallback={<p>Loading...</p>}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <PublicRoute>
-                <HomePage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/register"
-            exact
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            exact
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        {!isFetchingCurrentUser && (
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+
+            <Route
+              path="/register"
+              exact
+              element={
+                <PublicRoute>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              exact
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        )}
       </Suspense>
     </div>
   );
