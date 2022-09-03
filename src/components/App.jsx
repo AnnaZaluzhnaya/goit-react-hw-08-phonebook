@@ -1,7 +1,7 @@
 import style from 'components/App.module.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AppBar from 'components/AppBar';
-import Loader from './Loader/loader';
+import Loader from './Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { useEffect, lazy, Suspense } from 'react';
