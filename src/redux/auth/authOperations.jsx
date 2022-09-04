@@ -40,15 +40,14 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
-export const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async thunkAPI => {
   try {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    Notiflix.Notify.failure(
+    return thunkAPI.rejectWithValue(
       'Something went wrong, it was not possible to log out of the account. Try again.'
     );
-    return error.response.status;
   }
 });
 

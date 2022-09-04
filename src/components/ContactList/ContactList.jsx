@@ -17,12 +17,6 @@ const ContactList = () => {
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
-    const getFilteredNames = () => {
-      return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(value)
-      );
-    };
-    return getFilteredNames;
   }, [dispatch, contacts, value]);
 
   const getFilteredNames = () => {

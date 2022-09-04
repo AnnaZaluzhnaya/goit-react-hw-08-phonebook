@@ -20,14 +20,15 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const contactWillAdded = { name, number };
 
-    if (contacts.find(contact => contact.name === name)) {
+    if (contacts.find(contact => contact.name.toLowerCase() === name)) {
       Notiflix.Notify.info(`${name} is already in contacts`);
-    } else {
-      dispatch(contactsOperations.addContacts(contactWillAdded));
+      setName('');
+      setNumber('');
+      return;
     }
-
+    dispatch(contactsOperations.addContacts({ name, number }));
+    Notiflix.Notify.info('Contact created');
     setName('');
     setNumber('');
   };
