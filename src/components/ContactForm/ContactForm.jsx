@@ -20,17 +20,21 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    const contactFinder = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
 
-    if (contacts.find(contact => contact.name.toLowerCase() === name)) {
+    if (!contactFinder) {
+      dispatch(contactsOperations.addContacts({ name, number }));
+      Notiflix.Notify.info('Contact created');
+      setName('');
+      setNumber('');
+    }
+    if (contactFinder) {
       Notiflix.Notify.info(`${name} is already in contacts`);
       setName('');
       setNumber('');
-      return;
     }
-    dispatch(contactsOperations.addContacts({ name, number }));
-    Notiflix.Notify.info('Contact created');
-    setName('');
-    setNumber('');
   };
 
   const handleInputChange = event => {
