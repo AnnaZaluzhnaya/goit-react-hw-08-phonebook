@@ -7,7 +7,6 @@ import { useEffect, lazy, Suspense } from 'react';
 import { authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Loader from './Loader/loader';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -25,7 +24,7 @@ export const App = () => {
   return (
     <div className={style.wrapper}>
       <AppBar />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<p>LOADING...🤯</p>}>
         {!isFetchingCurrentUser && (
           <Routes>
             <Route path="/" element={<HomePage />} />
