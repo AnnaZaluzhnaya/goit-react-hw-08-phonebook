@@ -7,7 +7,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { authSelectors } from 'redux/auth';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import Loader from './Loader/loader';
+import Loader from './Loader';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
