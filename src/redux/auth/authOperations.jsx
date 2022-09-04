@@ -14,7 +14,6 @@ export const token = {
 };
 
 export const register = createAsyncThunk('auth/register', async credentials => {
-  console.log(credentials);
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
@@ -24,7 +23,6 @@ export const register = createAsyncThunk('auth/register', async credentials => {
     return data;
   } catch (error) {
     Notiflix.Notify.failure('Registration error, please try again');
-    return error.response.status;
   }
 });
 

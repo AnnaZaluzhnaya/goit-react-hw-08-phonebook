@@ -20,7 +20,7 @@ const Navigation = () => {
       {isLoggedIn && (
         <NavLink
           className={({ isActive }) =>
-            isActive ? ` ${style.active}` : style.link
+            isActive ? `${style.active}` : `${style.link}`
           }
           to="/contacts"
         >
